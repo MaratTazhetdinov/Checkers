@@ -1,0 +1,44 @@
+/* 
+  Localizable.strings
+  Homework 12
+
+  Created by Marat Tazhetdinov on 28.11.2021.
+  
+*/
+
+"newGameButton" = "New Game";
+"savedGameAlertMessage" = "Do you want to continue a previous game?";
+"continueAlert" = "Continue";
+"startAlert" = "Start a New Game";
+"cancelAlert" = "Cancel";
+"resultsButton" = "Results";
+"resultsLabel" = "Results";
+"settingsButton" = "Settings";
+"enterNamesLabel" = "Enter your names";
+"firstPlayerLabel" = "First Player";
+"secondPlayerLabel" = "Second Player";
+"enterAlert" = "You have to enter your names";
+"lengthAlert" = "The name couldn't be more than 10 letters";
+"dateLabel" = "Game started at ";
+"backMainMenuLabel" = "Back to Main Menu";
+"winAlert" = " wins!";
+"backButtonAlertMessage" = "Do you want to save the game?";
+"saveAlert" = "Save and quit";
+"notSaveAlert" = "Don't save and quit";
+"checkersStylelabel" = "Choose checkers style";
+"changeDeskButton" = "Change Desk Screen";
+"resetButton" = "Reset Desk Screen";
+"infoLabel1" = "Checkers has ancient roots. It is thought that the earliest form of checkers was a game discovered in an archeological dig at Ur in Iraq. Carbon dating makes it appear that this game was played around 3000 B.C. However, the game used a slightly different board, a different number of pieces and no one is quite certain of the exact rules.";
+"infoLabel2" = "In ancient Egypt a game called Alquerque, which had a 5X5 board was a common and much played game. Historians have traced it as far back as 1400 B.C. It was a game of such popularity that it was played all over the western world for thousands of years. Around 1100 a Frenchman got the idea of playing the game on a chess board. This meant expanding the number of pieces to 12 on a side. It was then called Fierges or Ferses. It was soon found that making jumps mandatory made the game more challenging. The French called this version Jeu Force. The older version was considered more of a social game for women and was called Le Jeu Plaisant De Dames.";
+"infoLabel3" = "Now the rules for checkers were set and the game was exported to England and America. In Great Britain the game was called Draughts. Books were written on the game in Spain as early as the mid 1500s and in England a mathematician name William Payne wrote his own treatise on Draughts in 1756. Through the years the game has retained its popularity. In 1847 the first world championship was awarded. Yet as time went on, it was realized that certain openings always gave one side an advantage. Thus, two move restrictions were developed for expert players that actually began the game in a random manner. Today even three move restrictions are used in tournament checkers. Checkers first hit the computer programmers' radar screens even before World War II. Although computers were in a rudimentary stage of development a famous pioneer, Alan Turing, created a basic program for checkers that required calculations be done on paper (because the computers themselves were not ready to be used in this fashion).";
+"infoLabel4" = "The first program to actually be put on a computer was created in 1952 by Arthur L. Samuel. As the years passed programs for checkers were improved primarily because of the ever increasing capacity and speed. Modern programs make use of data bases that show every possible combination of moves when 8 pieces are remaining on the board. This is thought in recent years to have been expanded to 10 pieces. This means that actual strategies needed by the program play less and less role and pure data base searches more and more. Computer programs have consistently played the best human players available to a series of draws (and even defeating them now and then). Today the game is as healthy as ever, with people all around the world playing at least a version of it. It can be good training in logic and thought and can be a lot of fun on a cold winter's evening, or in the summer shade of an oak tree at the local park.";
+"infoLabel5" = "Copyright 2021 by Marat Tazhetdinov";
+"infoLabel6" = "All rights reserved.";
+"languageLabel" = "Language";
+"backButton" = "Back";
+"infoHeaderLabel" = "History of Checkers";
+
+
+
+
+

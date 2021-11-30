@@ -15,14 +15,26 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var checkersStyleCollectionView: UICollectionView!
     @IBOutlet weak var checkersStyleLabel: UILabel!
+    @IBOutlet weak var languageLabel: UILabel!
+    @IBOutlet weak var ruImage: UIImageView!
+    @IBOutlet weak var enImage: UIImageView!
     
     var selectedCellIndex: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        selectedCellIndex = CheckersSettings.shared.getData().checkersStyle
+        selectedCellIndex = CheckersSettings.shared.checkersStyle
         selectDeskImageButton.delegate = self
         setupCollectionView()
+        localized()
+    }
+    
+    func localized() {
+        checkersStyleLabel.text = "checkersStylelabel".localized
+        selectDeskImageButton.text = "changeDeskButton".localized
+        resetButton.setTitle("resetButton".localized, for: .normal)
+        languageLabel.text = "languageLabel".localized
+        backButton.setTitle("backMainMenuLabel".localized, for: .normal)
     }
     
     override func viewDidLayoutSubviews() {
@@ -35,11 +47,17 @@ class SettingsViewController: UIViewController {
         resetButton.layer.cornerRadius = resetButton.frame.size.height / 2.0
         checkersStyleCollectionView.layer.cornerRadius = checkersStyleCollectionView.frame.size.height / 4.0
         checkersStyleCollectionView.backgroundColor = UIColor.clear.withAlphaComponent(0.3)
+        
+        if CheckersSettings.shared.currentLanguage == "en" {
+            enImage.addBorder(with: .black, borderWidth: 2.0)
+        } else {
+            ruImage.addBorder(with: .black, borderWidth: 2.0)
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
-        CheckersSettings.shared.saveData(object: CheckersSettings.shared)
+        CheckersSettings.shared.save()
     }
     
     func setupCollectionView () {
@@ -56,11 +74,29 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func goToNewVCButtonAction (_ sender : UIButton) {
-        self.navigationController?.pushViewController(UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "InfoViewController"), animated: true)
+//        self.navigationController?.pushViewController(UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "InfoViewController"), animated: true)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "InfoViewController")
+        vc.viewWillAppear(true)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func resetAction(_ sender: Any) {
         CheckersSettings.shared.deskImage = UIImage(named: "Table")
+    }
+    
+    @IBAction func ruButtonAction(_ sender: Any) {
+        CheckersSettings.shared.currentLanguage = "ru"
+        ruImage.addBorder(with: .black, borderWidth: 2.0)
+        enImage.addBorder(with: .clear, borderWidth: 0.0)
+        localized()
+    }
+    
+    @IBAction func enButtonAction(_ sender: Any) {
+        CheckersSettings.shared.currentLanguage = "en"
+        enImage.addBorder(with: .black, borderWidth: 2.0)
+        ruImage.addBorder(with: .clear, borderWidth: 0.0)
+        localized()
     }
 }
 

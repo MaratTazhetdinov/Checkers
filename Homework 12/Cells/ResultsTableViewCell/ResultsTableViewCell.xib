@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Boogaloo.ttf">
+            <string>Boogaloo-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="192" id="KGk-i7-Jjw" customClass="ResultsTableViewCell" customModule="Homework_12" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="411" height="192"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="411" height="192"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T6C-qT-6z6">
+                        <rect key="frame" x="8" y="8" width="395" height="26.5"/>
+                        <fontDescription key="fontDescription" name="Boogaloo-Regular" family="Boogaloo" pointSize="22"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="67" translatesAutoresizingMaskIntoConstraints="NO" id="ivF-cN-V4X">
+                        <rect key="frame" x="28" y="50.5" width="355" height="50"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MM7-bF-6jv">
+                                <rect key="frame" x="0.0" y="9.5" width="121" height="31"/>
+                                <fontDescription key="fontDescription" name="Boogaloo-Regular" family="Boogaloo" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5L4-ir-m66">
+                                <rect key="frame" x="188" y="0.0" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="0ao-ni-hl6"/>
+                                    <constraint firstAttribute="width" constant="50" id="cGH-xt-OC8"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trophyIcon" translatesAutoresizingMaskIntoConstraints="NO" id="aNn-6y-Du3">
+                                <rect key="frame" x="305" y="0.0" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="86X-dm-6xt"/>
+                                    <constraint firstAttribute="height" constant="50" id="UKy-eY-Kfl"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                    </stackView>
+                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="67" translatesAutoresizingMaskIntoConstraints="NO" id="rY9-62-GAN">
+                        <rect key="frame" x="28" y="120.5" width="355" height="50"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozf-Pz-dqq">
+                                <rect key="frame" x="0.0" y="9.5" width="121" height="31"/>
+                                <fontDescription key="fontDescription" name="Boogaloo-Regular" family="Boogaloo" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ihF-3A-w6X">
+                                <rect key="frame" x="188" y="0.0" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="TDs-iU-QyH"/>
+                                    <constraint firstAttribute="height" constant="50" id="n0q-ax-J8f"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trophyIcon" translatesAutoresizingMaskIntoConstraints="NO" id="ueY-vb-G4l">
+                                <rect key="frame" x="305" y="0.0" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="0rj-3v-YXb"/>
+                                    <constraint firstAttribute="width" constant="50" id="l40-Qd-8Dy"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="T6C-qT-6z6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="2P4-Ko-V9x"/>
+                    <constraint firstItem="ivF-cN-V4X" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="2fd-EZ-3dp"/>
+                    <constraint firstItem="rY9-62-GAN" firstAttribute="top" secondItem="ivF-cN-V4X" secondAttribute="bottom" constant="20" id="3kl-8a-3uv"/>
+                    <constraint firstItem="rY9-62-GAN" firstAttribute="trailing" secondItem="aNn-6y-Du3" secondAttribute="trailing" id="7tL-gu-Ufe"/>
+                    <constraint firstItem="T6C-qT-6z6" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="A0P-9U-Nz7"/>
+                    <constraint firstItem="ivF-cN-V4X" firstAttribute="top" secondItem="T6C-qT-6z6" secondAttribute="bottom" constant="16" id="Bjx-9g-1F3"/>
+                    <constraint firstAttribute="trailing" secondItem="T6C-qT-6z6" secondAttribute="trailing" constant="8" id="Gik-Sy-87D"/>
+                    <constraint firstItem="rY9-62-GAN" firstAttribute="leading" secondItem="ivF-cN-V4X" secondAttribute="leading" id="eje-x5-9tX"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="ivF-cN-V4X" secondAttribute="trailing" constant="8" id="g2S-ZM-hOH"/>
+                    <constraint firstItem="T6C-qT-6z6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="qfk-Mu-FzL"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="dateLabel" destination="T6C-qT-6z6" id="Ygd-vo-foh"/>
+                <outlet property="player1Checker" destination="5L4-ir-m66" id="zkE-6h-3Xe"/>
+                <outlet property="player1Name" destination="MM7-bF-6jv" id="GVt-Lq-rxD"/>
+                <outlet property="player1Trophy" destination="aNn-6y-Du3" id="wJD-JN-67Y"/>
+                <outlet property="player2Checker" destination="ihF-3A-w6X" id="PsG-wW-evF"/>
+                <outlet property="player2Name" destination="ozf-Pz-dqq" id="d5s-fW-GIo"/>
+                <outlet property="player2Trophy" destination="ueY-vb-G4l" id="GGD-1M-egq"/>
+            </connections>
+            <point key="canvasLocation" x="203.62318840579712" y="202.90178571428569"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="trophyIcon" width="768" height="882"/>
+    </resources>
+</document>

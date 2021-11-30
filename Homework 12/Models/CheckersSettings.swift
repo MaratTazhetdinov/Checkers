@@ -11,25 +11,23 @@ class CheckersSettings: NSObject, NSCoding, NSSecureCoding {
     
     static var supportsSecureCoding: Bool = true
     
-    static let shared = CheckersSettings()
+    static var shared: CheckersSettings = {
+        let fileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("CheckersData")
+        if let data = FileManager.default.contents(atPath: fileURL.absoluteString.replacingOccurrences(of: "file://", with: "")),
+           let object = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? CheckersSettings {
+            return object
+        }
+        return CheckersSettings()
+    }()
+    
+    private override init() {}
     
     var deskImage: UIImage! = UIImage(named: "Table")
     var checkersStyle: Int = 0
+    var currentLanguage: String = "en"
 
-    
-    override init() {
-        super.init()
-    }
-    
-    func getData () -> CheckersSettings {
-        let fileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("CheckersData")
-        guard let data = FileManager.default.contents(atPath: fileURL.absoluteString.replacingOccurrences(of: "file://", with: "")) else {return CheckersSettings()}
-        guard let object = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? CheckersSettings else {return CheckersSettings()}
-        return object
-    }
-    
-    func saveData (object: CheckersSettings) {
-        let data = try? NSKeyedArchiver.archivedData(withRootObject: object, requiringSecureCoding: true)
+    func save() {
+        let data = try? NSKeyedArchiver.archivedData(withRootObject: self, requiringSecureCoding: true)
         let fileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("CheckersData")
         try? data?.write(to: fileURL)
     }
@@ -37,16 +35,15 @@ class CheckersSettings: NSObject, NSCoding, NSSecureCoding {
     func encode(with coder: NSCoder) {
         coder.encode(deskImage.pngData(), forKey: "deskImage")
         coder.encode(checkersStyle, forKey: "checkerStyle")
+        coder.encode(currentLanguage, forKey: "currentLanguage")
     }
     
     required init?(coder: NSCoder) {
         let imageData = coder.decodeObject(forKey: "deskImage") as! Data
         self.deskImage = UIImage(data: imageData)
         self.checkersStyle = coder.decodeInteger(forKey: "checkerStyle")
+        if coder.containsValue(forKey: "currentLanguage") {
+            self.currentLanguage = coder.decodeObject(forKey: "currentLanguage") as! String
+        }
     }
 }
- 
-       
-        
-    
-

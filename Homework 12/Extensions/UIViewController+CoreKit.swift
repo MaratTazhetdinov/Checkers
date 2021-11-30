@@ -16,7 +16,7 @@ extension UIViewController {
     @discardableResult
     func presentAlertController(with title: String?, message: String?, useTextField: Bool = false, preferredStyle: UIAlertController.Style = .alert, actions: UIAlertAction...) -> UIAlertController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancel = UIAlertAction(title: "cancelAlert".localized, style: .cancel, handler: nil)
         
         if useTextField, preferredStyle == .alert { alert.addTextField { _ in } }
         
@@ -40,4 +40,16 @@ extension UIViewController {
         
         return alert
     }
+    
+    @discardableResult
+    func presentResultAlertController(with title: String?, message: String?, useTextField: Bool = false, preferredStyle: UIAlertController.Style = .alert, actions: UIAlertAction...) -> UIAlertController {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
+        if useTextField, preferredStyle == .alert { alert.addTextField { _ in } }
+        actions.forEach { alert.addAction($0) }
+        present(alert, animated: true, completion: nil)
+        
+        return alert
+    }
+    
+    
 }
