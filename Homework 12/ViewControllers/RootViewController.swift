@@ -15,7 +15,7 @@ class RootViewController: UIViewController {
 
     override func viewDidLoad() {    
         super.viewDidLoad()
-
+        
         for index in 0..<buttons.count {
             buttons[index].delegate = self
         }

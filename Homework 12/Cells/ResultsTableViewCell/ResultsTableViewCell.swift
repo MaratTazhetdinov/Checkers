@@ -27,18 +27,15 @@ class ResultsTableViewCell: UITableViewCell {
         self.backgroundView = blurEffectView
     }
     
-    func configure(player1Name: String, player2Name: String, player1Checker: String, player2Checker: String, player1Winner: Bool, date: String) {
+    func configure(gameData: GameData) {
         
-        self.player1Name.text = player1Name
-        self.player2Name.text = player2Name
-        self.player1Checker.image = UIImage(named: player1Checker)
-        self.player2Checker.image = UIImage(named: player2Checker)
-        dateLabel.text = date
+        self.player1Name.text = gameData.player1?.name
+        self.player2Name.text = gameData.player2?.name
+        self.player1Checker.image = UIImage(named: (gameData.player1?.checkerStyle)!)
+        self.player2Checker.image = UIImage(named: (gameData.player2?.checkerStyle)!)
+        dateLabel.text = gameData.gameDate
         
-        if player1Winner {
-            self.player2Trophy.isHidden = true
-        } else {
-            self.player1Trophy.isHidden = true
-        }
+        self.player1Trophy.alpha = (gameData.player2?.winner ?? false) ? 1 : 0
+        self.player2Trophy.alpha = (gameData.player1?.winner ?? false) ? 1 : 0
     }
 }

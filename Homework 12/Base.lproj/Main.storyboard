@@ -535,6 +535,25 @@
                                 <color key="textColor" red="0.1686266065" green="0.20392209289999999" blue="0.1960783005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LXA-gF-y25">
+                                <rect key="frame" x="334" y="750" width="40" height="40"/>
+                                <color key="backgroundColor" red="0.1686266065" green="0.20392209289999999" blue="0.1960783005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="6GT-ib-06w"/>
+                                    <constraint firstAttribute="height" constant="40" id="DyI-Ii-Otm"/>
+                                </constraints>
+                                <color key="tintColor" red="0.7764715552" green="0.74509757759999995" blue="0.67058974500000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="trash" catalog="system" title="!"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="removeActionButton:" destination="VTc-qH-Ytz" eventType="touchUpInside" id="7iY-5m-eLd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="EW3-aF-6vR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -543,11 +562,13 @@
                             <constraint firstItem="EW3-aF-6vR" firstAttribute="trailing" secondItem="THr-HH-1Qb" secondAttribute="trailing" id="14M-TA-agq"/>
                             <constraint firstItem="dlQ-1U-dHE" firstAttribute="top" secondItem="EW3-aF-6vR" secondAttribute="top" constant="80" id="2iC-5u-DwI"/>
                             <constraint firstItem="EW3-aF-6vR" firstAttribute="bottom" secondItem="THr-HH-1Qb" secondAttribute="bottom" constant="-40" id="4fA-o7-BzI"/>
+                            <constraint firstItem="LXA-gF-y25" firstAttribute="bottom" secondItem="0ba-th-8Qc" secondAttribute="bottom" id="PeT-e6-Z6h"/>
                             <constraint firstItem="0ba-th-8Qc" firstAttribute="centerX" secondItem="EW3-aF-6vR" secondAttribute="centerX" id="SIT-qi-RK3"/>
                             <constraint firstItem="0ba-th-8Qc" firstAttribute="top" secondItem="dlQ-1U-dHE" secondAttribute="bottom" constant="20" id="V6q-CV-2dZ"/>
                             <constraint firstItem="VET-oc-LgD" firstAttribute="height" secondItem="THr-HH-1Qb" secondAttribute="height" multiplier="0.35" id="VkT-1v-eno"/>
                             <constraint firstItem="7ex-nY-eUb" firstAttribute="leading" secondItem="EW3-aF-6vR" secondAttribute="leading" constant="20" id="WF1-5W-k7j"/>
                             <constraint firstItem="THr-HH-1Qb" firstAttribute="leading" secondItem="EW3-aF-6vR" secondAttribute="leading" id="ZFb-SI-ySd"/>
+                            <constraint firstItem="LXA-gF-y25" firstAttribute="trailing" secondItem="dlQ-1U-dHE" secondAttribute="trailing" id="f8e-rN-G4c"/>
                             <constraint firstItem="VET-oc-LgD" firstAttribute="centerX" secondItem="EW3-aF-6vR" secondAttribute="centerX" id="l2j-ew-k9V"/>
                             <constraint firstItem="dlQ-1U-dHE" firstAttribute="top" secondItem="7ex-nY-eUb" secondAttribute="bottom" constant="26" id="m4y-KH-bIc"/>
                             <constraint firstItem="dlQ-1U-dHE" firstAttribute="leading" secondItem="EW3-aF-6vR" secondAttribute="leading" constant="16" id="q4k-Lv-471"/>
@@ -559,6 +580,7 @@
                     </view>
                     <connections>
                         <outlet property="backButton" destination="0ba-th-8Qc" id="1yW-ev-mkd"/>
+                        <outlet property="removeButton" destination="LXA-gF-y25" id="QsH-d7-UJM"/>
                         <outlet property="resultsLabel" destination="7ex-nY-eUb" id="q7c-Hk-1kT"/>
                         <outlet property="tableView" destination="dlQ-1U-dHE" id="v0h-3v-yQ7"/>
                     </connections>
@@ -874,6 +896,7 @@
         <image name="VS" width="1504" height="2878"/>
         <image name="en" width="612" height="408"/>
         <image name="ru" width="400" height="267"/>
+        <image name="trash" catalog="system" width="121" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

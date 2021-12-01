@@ -25,6 +25,24 @@ class GameData: NSObject, NSCoding, NSSecureCoding {
         super.init()
     }
     
+    init(from game: GameCD ) {
+        self.gameDate = game.date
+        if let players = game.players?.allObjects as? [PlayerCD],
+           let player1 = players.first,
+           let player2 = players.last
+        {
+            self.player1 = Player(from: player1)
+            self.player2 = Player(from: player2)
+        }
+    }
+    
+    func updateDate() {
+        let currentDate = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm dd.MM"
+        gameDate = formatter.string(from: currentDate)
+    }
+    
     func encode(with coder: NSCoder) {
         if let player1 = player1 {
             coder.encode(player1, forKey: "player1")

@@ -2,10 +2,10 @@
 //  CoreDataManager.swift
 //  Homework 12
 //
-//  Created by Marat Tazhetdinov on 28.11.2021.
+//  Created by Marat Tazhetdinov on 30.11.2021.
 //
 
-import Foundation
+import UIKit
 import CoreData
 
 class CoreDataManager {
@@ -13,7 +13,7 @@ class CoreDataManager {
     static let shared = CoreDataManager()
     
     lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "Homework_12")
+        let container = NSPersistentContainer(name: "Homework 12")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
@@ -36,65 +36,48 @@ class CoreDataManager {
     }
     
     func addNewGame(by game: GameData) {
-        let game_CD = Game_CD(context: persistentContainer.viewContext)
-        game_CD.date = game.gameDate
+        let gameCD = GameCD(context: persistentContainer.viewContext)
+        gameCD.date = game.gameDate
         
-        let player1 = Player_CD(context: persistentContainer.viewContext)
-        player1.convert(by: game.player1!)
-        game_CD.addToPlayer(player1)
+        let firstPlayerCD = PlayerCD(context: persistentContainer.viewContext)
+        firstPlayerCD.convert(by: game.player1!)
+        gameCD.addToPlayers(firstPlayerCD)
         
-        let player2 = Player_CD(context: persistentContainer.viewContext)
-        player2.convert(by: game.player2!)
-        game_CD.addToPlayer(player2)
+        let secondPlayerCD = PlayerCD(context: persistentContainer.viewContext)
+        secondPlayerCD.convert(by: game.player2!)
+        gameCD.addToPlayers(secondPlayerCD)
         
-        persistentContainer.viewContext.insert(game_CD)
+        persistentContainer.viewContext.insert(gameCD)
+        saveContext()
     }
     
-//    func getPlayers(by game: GameData) -> [Player] {
-//        let requst: NSFetchRequest<Game_CD> = Game_CD.fetchRequest()
-//        var players: [Player] = []
-//
-//        do {
-//            guard let game_CD = try persistentContainer.viewContext.fetch(requst).first else { return [] }
-//            game_CD.player?.allObjects.forEach({ player_CD in
-//                guard let player_CD = player_CD as? Player_CD else { return }
-//                let player = Player(name: player_CD.name!, checkerColor: 100)
-//                player.checkerStyle = player_CD.checkerStyle
-//                player.winner = player_CD.winner
-//                players.append(player)
-//            })
-//            saveContext()
-//        } catch (let e) {
-//            print(e)
-//        }
-//
-//        return players
-//    }
-    
-
-    func getGame() -> [GameData] {
+    func getGames() -> [GameData] {
         var array: [GameData] = []
-        
-        
-        
         do {
-            let games = try persistentContainer.viewContext.fetch(Game_CD.fetchRequest())
-            
-            for game_CD in games {
-                let game = GameData()
-                game.gameDate = game_CD.date
-                array.append(game)
-                
+            let games = try persistentContainer.viewContext.fetch(GameCD.fetchRequest())
+            for game in games {
+                array.append(GameData(from: game))
             }
-
+//            games.forEach { game in
+//                guard let game = game as? GameCD else { return }
+//                array.append(GameData(from: game))
+//            }
         } catch (let e) {
             print(e)
         }
-
-        
-        
         return array
     }
     
-    
+    func deleteGames() {
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "GameCD")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try persistentContainer.viewContext.execute(deleteRequest)
+        }
+        catch {
+            print(error)
+        }
+    }
+  
 }

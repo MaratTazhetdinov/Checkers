@@ -23,6 +23,13 @@ class Player: NSObject, NSCoding, NSSecureCoding
         self.checkerColor = checkerColor
     }
     
+    init(from: PlayerCD) {
+        super.init()
+        self.name = from.name
+        self.checkerStyle = from.checkerStyle
+        self.winner = from.winner
+    }
+    
     func encode(with coder: NSCoder) {
         if let name = name {
             coder.encode(name, forKey: "name")

@@ -132,15 +132,13 @@ class GameViewController: UIViewController {
     }
     
     func setDate() {
+        if game?.gameDate == nil {
+            game?.updateDate()
+        }
         if let gameDate = game?.gameDate {
             date = gameDate
-        } else {
-            let currentDate = Date()
-            let formatter = DateFormatter()
-            formatter.dateFormat = "HH:mm dd.MM"
-            date = formatter.string(from: currentDate)
+            dateLabel.text = "dateLabel".localized + date
         }
-        dateLabel.text = "dateLabel".localized + date
     }
     
     func localized() {

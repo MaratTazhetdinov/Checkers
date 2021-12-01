@@ -53,26 +53,6 @@ extension GameViewController {
                 blackCount = blackCount + 1
             }
         }
-        if whiteCount == 0 {
-            timer?.invalidate()
-            presentResultAlertController(with: nil,
-                                         message: "\(detectPlayer(color: .black)) " + "winAlert".localized,
-                                   preferredStyle: .alert,
-                                   actions: UIAlertAction(title: "backMainMenuLabel".localized, style: .default, handler: { _ in
-                                                                                    self.navigationController!.popToRootViewController(animated: true)
-                                                                                    }))
-            detectWinner(color: .black)
-        }
-        if blackCount == 0 {
-            timer?.invalidate()
-            presentResultAlertController(with: nil,
-                                   message: "\(detectPlayer(color: .white)) " + "winAlert".localized,
-                                   preferredStyle: .alert,
-                                   actions: UIAlertAction(title: "backMainMenuLabel".localized, style: .default, handler: { _ in
-                                                                                    self.navigationController!.popToRootViewController(animated: true)
-                                                                                    }))
-            detectWinner(color: .white)
-        }
         var whiteActions: [Int] = []
         var blackActions: [Int] = []
         for checker in checkersArray {
@@ -89,7 +69,31 @@ extension GameViewController {
                 blackActions = blackActions + checkAttack(cellTag: checker.cellTag) + checkMove(cellTag: checker.cellTag, checkerColor: .black)
             }
         }
-        if whiteActions == [] {
+        
+        game?.updateDate()
+        if whiteCount == 0 {
+            timer?.invalidate()
+            presentResultAlertController(with: nil,
+                                         message: "\(detectPlayer(color: .black)) " + "winAlert".localized,
+                                   preferredStyle: .alert,
+                                   actions: UIAlertAction(title: "backMainMenuLabel".localized, style: .default, handler: { _ in
+                                                                                    self.navigationController!.popToRootViewController(animated: true)
+                                                                                    }))
+            detectWinner(color: .black)
+            CoreDataManager.shared.addNewGame(by: game!)
+        }
+        else if blackCount == 0 {
+            timer?.invalidate()
+            presentResultAlertController(with: nil,
+                                   message: "\(detectPlayer(color: .white)) " + "winAlert".localized,
+                                   preferredStyle: .alert,
+                                   actions: UIAlertAction(title: "backMainMenuLabel".localized, style: .default, handler: { _ in
+                                                                                    self.navigationController!.popToRootViewController(animated: true)
+                                                                                    }))
+            detectWinner(color: .white)
+            CoreDataManager.shared.addNewGame(by: game!)
+        }
+        else if whiteActions == [] {
             timer?.invalidate()
             presentResultAlertController(with: nil,
                                    message: "\(detectPlayer(color: .black))" + "winAlert".localized,
@@ -98,8 +102,9 @@ extension GameViewController {
                                                                                     self.navigationController!.popToRootViewController(animated: true)
                                                                                     }))
                                    detectWinner(color: .black)
+            CoreDataManager.shared.addNewGame(by: game!)
         }
-        if blackActions == [] {
+        else if blackActions == [] {
             timer?.invalidate()
             presentResultAlertController(with: nil,
                                    message: "\(detectPlayer(color: .white))" + "winAlert".localized,
@@ -108,8 +113,8 @@ extension GameViewController {
                                                                                     self.navigationController!.popToRootViewController(animated: true)
                                                                                     }))
                                   detectWinner(color: .black)
+            CoreDataManager.shared.addNewGame(by: game!)
         }
-        
     }
     
     func detectAction(before: Int, after: Int) -> String {

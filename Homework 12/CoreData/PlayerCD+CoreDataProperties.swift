@@ -1,8 +1,8 @@
 //
-//  Player_CD+CoreDataProperties.swift
+//  PlayerCD+CoreDataProperties.swift
 //  Homework 12
 //
-//  Created by Marat Tazhetdinov on 28.11.2021.
+//  Created by Marat Tazhetdinov on 30.11.2021.
 //
 //
 
@@ -10,16 +10,16 @@ import Foundation
 import CoreData
 
 
-extension Player_CD {
+extension PlayerCD {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Player_CD> {
-        return NSFetchRequest<Player_CD>(entityName: "Player_CD")
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<PlayerCD> {
+        return NSFetchRequest<PlayerCD>(entityName: "PlayerCD")
     }
 
     @NSManaged public var name: String?
     @NSManaged public var checkerStyle: String?
     @NSManaged public var winner: Bool
-    @NSManaged public var game: Game_CD?
+    @NSManaged public var game: GameCD?
     
     func convert(by player: Player) {
         self.name = player.name
@@ -29,6 +29,6 @@ extension Player_CD {
 
 }
 
-extension Player_CD : Identifiable {
+extension PlayerCD : Identifiable {
 
 }

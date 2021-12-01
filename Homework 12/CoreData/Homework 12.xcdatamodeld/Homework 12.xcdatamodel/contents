@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19206" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="GameCD" representedClassName=".GameCD" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="String"/>
+        <relationship name="players" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PlayerCD" inverseName="game" inverseEntity="PlayerCD"/>
+    </entity>
+    <entity name="PlayerCD" representedClassName=".PlayerCD" syncable="YES">
+        <attribute name="checkerStyle" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="winner" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <relationship name="game" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GameCD" inverseName="players" inverseEntity="GameCD"/>
+    </entity>
+    <elements>
+        <element name="GameCD" positionX="-63" positionY="-18" width="128" height="73"/>
+        <element name="PlayerCD" positionX="141.8984375" positionY="-9.33203125" width="128" height="103"/>
+    </elements>
+</model>
